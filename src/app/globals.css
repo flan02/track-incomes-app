@@ -32,3 +32,10 @@ body {
   }
 }
 */
+
+/* $ Pseudoclases de Webkit: Ocultar los botones de aumento y disminución */
+input[type="number"]::-webkit-inner-spin-button, 
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

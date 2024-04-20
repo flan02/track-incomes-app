@@ -3,9 +3,7 @@ import { ITransaction } from "./transaction";
 
 
 export type typeTransaction = {
-  id: string;
-  description: string;
-  amount: number;
+  transaction: ITransaction;
   transactions: ITransaction[];
   addTransaction: (transaction: ITransaction) => void;
 }

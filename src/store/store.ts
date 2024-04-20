@@ -18,10 +18,14 @@ export const useTest = create(
 
 
 const initTransaction = {
-  id: '',
-  description: '',
-  amount: 0,
+  transaction: {
+    id: '',
+    description: '',
+    amount: 0,
+    date: new Date(),
+  },
   transactions: [],
+
 };
 
 
