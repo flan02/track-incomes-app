@@ -1,9 +1,17 @@
-import Image from "next/image";
+import { TransactionForm } from "@/components/TransactionForm";
 
-export default function Home() {
+
+
+type Props = {}
+
+
+
+
+
+export default function App() {
   return (
-    <main>
-      <h1 className="border border-rose-500">Track Incomes</h1>
-    </main>
-  );
+    <>
+      <TransactionForm />
+    </>
+  )
 }
