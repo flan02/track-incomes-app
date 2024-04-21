@@ -1,8 +1,8 @@
-import { ITestCounter } from "@/test";
+
 import { typeTransaction } from "@/types";
 import { create } from "zustand";
 import { persist } from 'zustand/middleware'
-
+/*
 export const useTest = create(
   persist<ITestCounter>(
     (set) => ({
@@ -15,7 +15,7 @@ export const useTest = create(
     }
   )
 );
-
+*/
 
 const initTransaction = {
   transaction: {
@@ -35,9 +35,13 @@ export const useTransaction = create(
       ...initTransaction,
       addTransaction: (transaction) =>
         set((state) => ({ transactions: [...state.transactions, transaction] })),
+      deleteTransaction: (id) =>
+        set((state) => ({ transactions: state.transactions.filter((transaction) => transaction.id !== id) })),
+      reset: () => set(initTransaction),
     }),
     {
       name: 'transaction-store',
-    }
-  )
+    },
+  ),
+
 );

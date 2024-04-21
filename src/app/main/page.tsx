@@ -1,11 +1,16 @@
-import { TransactionForm } from '@/components/(transactions)/TransactionForm'
+
+import Navbar from '@/components/Navbar'
 import React from 'react'
 
 type Props = {}
 
 const Mainpage = (props: Props) => {
   return (
-    <TransactionForm />
+    <>
+      <Navbar />
+      <h1>Home Expense Tracker.... Novedades, proximas actualizaciones</h1>
+
+    </>
   )
 }
 

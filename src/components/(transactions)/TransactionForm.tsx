@@ -1,6 +1,6 @@
 'use client'
 import { useTransaction } from "@/store/store";
-import React from "react";
+import React, { useEffect } from "react";
 import { Form, useForm } from "react-hook-form";
 import TransactionList from "./TransactionList";
 
@@ -16,8 +16,9 @@ const opts = {
 
 export const TransactionForm = (_props: Props) => {
 
-  const [description, setDescription] = React.useState<string>("add description");
+  const [description, setDescription] = React.useState<string>("");
   const [amount, setAmount] = React.useState<number>(0.00);
+  const [response, setResponse] = React.useState<string>("");
   const transaction = useTransaction();
 
   const form = useForm();
@@ -25,14 +26,25 @@ export const TransactionForm = (_props: Props) => {
   const onSubmit = form.handleSubmit(async (data) => {
     console.log('initializing transaction');
     transaction.addTransaction({
-      id: "1",
+      id: (transaction.transactions.length + 1).toString(),
       description: data.description,
       amount: +data.amount,
       date: new Date()
     });
-    setDescription("");
-    setAmount(0.00);
+    setDescription(""); // ! it doesn't work
+    setAmount(0.00); // ! it doesn't work
+    setResponse("Gasto ingresado correctamente");
   });
+
+  useEffect(() => {
+
+    setTimeout(() => {
+
+      setResponse("");
+    }, 1500);
+
+  }, [transaction.transactions]);
+
 
 
   return (
@@ -40,7 +52,7 @@ export const TransactionForm = (_props: Props) => {
       <Form action="" control={form.control} onSubmit={onSubmit} className="w-[50%] mx-auto mt-4 h-60 flex flex-col items-center justify-evenly pt-4 bg-black text-white">
         <input
           autoComplete="off"
-          type="text" {...(form.register('description', opts))} placeholder="transaction description" className="text-emerald-600 bg-slate-700" /> <br />
+          type="text" {...(form.register('description', opts))} placeholder="agregar descripcion" className="text-emerald-600 bg-slate-700" /> <br />
         {form.formState.errors.description && <span>{`${form.formState.errors.description?.message}`}</span>}
         <input inputMode="none"
           type="number" {...(form.register('amount', opts))} placeholder="$0.00" className="text-emerald-600 bg-slate-700" /> <br />
@@ -51,9 +63,10 @@ export const TransactionForm = (_props: Props) => {
         </button>
       </Form>
 
-      <br /><br /><br />
-      <h2>Transactions</h2>
-      <TransactionList />
+      {
+        response && <p className="text-center text-green-700 text-xl">{response}</p>
+      }
+
 
     </>
   )
