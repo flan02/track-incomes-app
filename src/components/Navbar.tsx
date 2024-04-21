@@ -11,7 +11,7 @@ const Navbar = (props: Props) => {
       <Link href="/main/operaciones" >ver ingresos/gastos</Link>
       <Link href="/main/lista">ver lista</Link>
       <Link href="/main/balance">ver balance</Link>
-      <Link href="/main/">graficas</Link>
+      <Link href="/main/graficos">graficas</Link>
       <Link href="/docs">documentacion</Link>
       <Link href="/premium">premium</Link>
       <Link href="/main/">opciones</Link>

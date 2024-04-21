@@ -10,7 +10,7 @@ const Operacionespage = (props: Props) => {
   return (
     <>
       <Navbar />
-      <h1>Operacionespage</h1>
+      <h1 className="text-4xl">Operacionespage</h1>
 
       <IncomeExpenses />
     </>

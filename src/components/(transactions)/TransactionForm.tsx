@@ -15,9 +15,9 @@ const opts = {
 }
 
 export const TransactionForm = (_props: Props) => {
-
-  const [description, setDescription] = React.useState<string>("");
-  const [amount, setAmount] = React.useState<number>(0.00);
+  // * these state variables are not necessary if we use react-hook-form
+  //const [description, setDescription] = React.useState<string>("");
+  //const [amount, setAmount] = React.useState<number>(0.00);
   const [response, setResponse] = React.useState<string>("");
   const transaction = useTransaction();
 
@@ -31,8 +31,8 @@ export const TransactionForm = (_props: Props) => {
       amount: +data.amount, // * convert string value to number (+)
       date: new Date()
     });
-    setDescription(""); // ! it doesn't work
-    setAmount(0.00); // ! it doesn't work
+
+    form.reset()
     setResponse("Gasto ingresado correctamente");
   });
 
@@ -52,6 +52,7 @@ export const TransactionForm = (_props: Props) => {
       <Form action="" control={form.control} onSubmit={onSubmit} className="w-[50%] mx-auto mt-4 h-60 flex flex-col items-center justify-evenly pt-4 bg-black text-white">
         <input
           autoComplete="off"
+
           type="text" {...(form.register('description', opts))} placeholder="agregar descripcion" className="text-emerald-600 bg-slate-700" /> <br />
         {form.formState.errors.description && <span>{`${form.formState.errors.description?.message}`}</span>}
         <input inputMode="none"

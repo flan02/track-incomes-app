@@ -27,7 +27,7 @@ const IncomeExpenses = (props: Props) => {
       <section className="flex">
         {
           isIncomeActive &&
-          <article className="bg-blue-200 w-[50%]">
+          <article className="bg-blue-200 w-[50%] text-2xl">
             <h4>
               {
                 incomes.length > 0
@@ -38,7 +38,7 @@ const IncomeExpenses = (props: Props) => {
         }
         {
           isExpenseActive &&
-          <article className="bg-red-200 w-[50%]">
+          <article className="bg-red-200 w-[50%] text-2xl">
             <h4>
               {
                 expenses.length > 0
