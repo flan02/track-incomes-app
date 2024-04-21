@@ -1,4 +1,5 @@
 
+import IncomeExpenses from '@/components/IncomeExpenses'
 import Navbar from '@/components/Navbar'
 import React from 'react'
 

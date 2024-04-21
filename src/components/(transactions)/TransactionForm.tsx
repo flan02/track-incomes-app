@@ -24,11 +24,11 @@ export const TransactionForm = (_props: Props) => {
   const form = useForm();
 
   const onSubmit = form.handleSubmit(async (data) => {
-    console.log('initializing transaction');
+    //console.log('initializing transaction');
     transaction.addTransaction({
       id: (transaction.transactions.length + 1).toString(),
       description: data.description,
-      amount: +data.amount,
+      amount: +data.amount, // * convert string value to number (+)
       date: new Date()
     });
     setDescription(""); // ! it doesn't work
